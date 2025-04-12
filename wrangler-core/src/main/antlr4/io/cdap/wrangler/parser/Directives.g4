@@ -140,7 +140,7 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
+ : String | Number | Column | Bool | BYTE_SIZE | TIME_DURATION
  ;
 
 ecommand
@@ -252,6 +252,28 @@ Bool
  : 'true'
  | 'false'
  ;
+
+BYTE_SIZE
+  : Digit+ ('.' Digit+)? BYTE_UNIT
+  ;
+
+fragment BYTE_UNIT
+  : [kKmMgGtTpP] [bB]
+  ;
+
+TIME_DURATION
+  : Digit+ ('.' Digit+)? TIME_UNIT
+  ;
+
+TIME_UNIT
+  : 'ms'
+  | 's'
+  | 'sec'
+  | 'seconds'
+  | 'm'
+  | 'min'
+  | 'minutes'
+  ;
 
 Number
  : Int ('.' Digit*)?
