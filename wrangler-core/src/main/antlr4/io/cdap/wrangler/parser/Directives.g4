@@ -253,6 +253,7 @@ Bool
  | 'false'
  ;
 
+/* Grammar modification*/
 BYTE_SIZE
   : Digit+ ('.' Digit+)? BYTE_UNIT
   ;
