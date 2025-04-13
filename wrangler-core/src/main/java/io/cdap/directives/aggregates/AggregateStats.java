@@ -18,8 +18,8 @@ package io.cdap.directives.aggregates;
 
 import io.cdap.wrangler.api.*;
 import io.cdap.wrangler.api.parser.*;
-import io.cdap.wrangler.api.annotation.DirectiveClass;
-import io.cdap.wrangler.api.Directive.AggregateDirective;
+import io.cdap.wrangler.api.annotations.DirectiveClass;
+import io.cdap.wrangler.api.AggregateDirective;
 import io.cdap.wrangler.api.Row;
 import io.cdap.wrangler.api.ExecutorContext;
 import io.cdap.wrangler.api.TransientStore;
