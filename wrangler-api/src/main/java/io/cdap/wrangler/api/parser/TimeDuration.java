@@ -17,11 +17,15 @@
 
 package io.cdap.wrangler.api.parser;
 
-import java.util.Locale;
-
 import com.google.gson.JsonElement;
 
-public class TimeDuration implements Token{
+import java.util.Locale;
+
+/**
+ * Represents a time duration like 150ms, 2min, or 3seconds.
+ */
+
+public class TimeDuration implements Token {
     private final double value;
     private final String unit;
 
@@ -31,7 +35,7 @@ public class TimeDuration implements Token{
         this.value = Double.parseDouble(raw.substring(0, index));
         this.unit = raw.substring(index);
 
-        if(!unit.matches("ms|s|sec|seconds|m|min|minutes")) {
+        if (!unit.matches("ms|s|sec|seconds|m|min|minutes")) {
             throw new IllegalArgumentException("Invalid time unit: " + unit);
         }
     }
@@ -55,8 +59,8 @@ public class TimeDuration implements Token{
     }
 
     private int findFirstLetter(String input) {
-        for(int i = 0; i < input.length(); i++) {
-           if(!Character.isDigit(input.charAt(i)) && input.charAt(i) != '.') {
+        for (int i = 0; i < input.length(); i++) {
+           if (!Character.isDigit(input.charAt(i)) && input.charAt(i) != '.') {
             return i;
            }
         }

@@ -17,21 +17,25 @@
 
 package io.cdap.wrangler.api.parser;
 
-import java.util.Locale;
-
 import com.google.gson.JsonElement;
 
-public class ByteSize implements Token{
+import java.util.Locale;
+
+/**
+ * Represents a byte size like 10KB, 200MB, etc.
+ */
+
+public class ByteSize implements Token {
     private final double value;
     private final String unit;
 
-    public ByteSize(String raw){
+    public ByteSize(String raw) {
         raw = raw.trim().toUpperCase(Locale.ROOT);
         int index = findFirstLetter(raw);
         this.value = Double.parseDouble(raw.substring(0, index));
         this.unit = raw.substring(index);
 
-        if(!unit.matches("KB|MB|GB|TB|PB")){
+        if (!unit.matches("KB|MB|GB|TB|PB")) {
             throw new IllegalArgumentException("Invalid byte unit: " + unit);
         }
     }
@@ -53,8 +57,8 @@ public class ByteSize implements Token{
     }
 
     private int findFirstLetter(String input) {
-        for (int i = 0; i < input.length(); i++){
-            if(!Character.isDigit(input.charAt(i)) && input.charAt(i) != '.'){
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i)) && input.charAt(i) != '.') {
                 return i;
             }
         }

@@ -140,7 +140,7 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool | BYTE_SIZE | TIME_DURATION
+ : String | Number | Column | Bool | BYTE_SIZE | TIME_DURATION | byteSizeArg | timeDurationArg
  ;
 
 ecommand
@@ -266,7 +266,7 @@ TIME_DURATION
   : Digit+ ('.' Digit+)? TIME_UNIT
   ;
 
-TIME_UNIT
+fragment TIME_UNIT
   : 'ms'
   | 's'
   | 'sec'
@@ -275,6 +275,10 @@ TIME_UNIT
   | 'min'
   | 'minutes'
   ;
+
+/* Parser Rules */
+byteSizeArg: BYTE_SIZE;
+timeDurationArg: TIME_DURATION;
 
 Number
  : Int ('.' Digit*)?
